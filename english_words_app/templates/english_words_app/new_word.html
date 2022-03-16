@@ -1,0 +1,12 @@
+{% extends "english_words_app/base.html" %}
+
+{% block content %}
+<p>Add a new word:</p>
+
+<form action="{% url 'english_words_app:new_word' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Add word</button>
+</form>
+
+{% endblock %}

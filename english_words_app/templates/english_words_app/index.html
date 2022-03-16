@@ -3,7 +3,12 @@
 {% block content %}
 
 {% if words %}
-<h3>All words</h3>
+<h3>All words
+    <a href="{% url 'english_words_app:dictionary_desc' %}">name↓</a>
+    <a href="{% url 'english_words_app:dictionary' %}">name↑</a>
+</h3>
+
+<h4></h4>
 {% endif %}
 <ul>
     {% for word in words %}

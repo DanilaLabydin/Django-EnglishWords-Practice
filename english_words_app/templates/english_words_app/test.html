@@ -1,0 +1,11 @@
+
+
+
+<p><a href="{% url 'english_words_app:test_func' word.id %}">{{ word }}</a></p>
+
+<form action="{% url 'english_words_app:test_func' word.id %}" method="post">
+    {% csrf_token %}
+    {{ form.ap_p }}
+    <button name="submit">Save changes</button>
+</form>
+

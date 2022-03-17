@@ -41,6 +41,32 @@ def words_practice(request):
 
 def words_practice1(request):
     words = EnglishWord.objects.all()
+    if request.method != 'POST':
+        form = WordPracticeForm()
+    else:
+        form = WordForm(data=request.POST)
+        if form.is_valid():
+            print(form.cleaned_data['translation'])
+    return render(request, 'english_words_app/words_practice1.html', {'words': words, 'form': form})
+
+
+def test_fun(request, word_id):
+    word = EnglishWord.objects.get(id=word_id)
+
+    if request.method != 'POST':
+        form = WordPracticeForm()
+    else:
+        form = WordForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            # return redirect('english_words_app:dictionary')
+    context = {'word': word, 'form': form}
+    return render(request, 'english_words_app/test.html', context)
+
+
+"""
+def words_practice1(request):
+    words = EnglishWord.objects.all()
     for word in words:
         if request.method != 'POST':
             form = WordPracticeForm()
@@ -54,3 +80,4 @@ def words_practice1(request):
                     print('no')
 
     return render(request, 'english_words_app/words_practice1.html', {'words': words, 'form': form})
+"""

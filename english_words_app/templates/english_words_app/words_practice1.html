@@ -11,7 +11,8 @@
             {{word}}
             <form action="{% url 'english_words_app:words_practice1' %}" method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.as_p }}<button name="submit">Add word</button>
+</form>
         </div>
     </li>
     {% empty %}
@@ -19,7 +20,6 @@
     {% endfor %}
 </ul>
 
-    <button name="submit">Add word</button>
-</form>
+
 
 {% endblock %}
